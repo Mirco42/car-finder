@@ -1,0 +1,62 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Car Finder",
+    "version" : "2023-08-10T12:48:39Z"
+  },
+  "servers" : [ {
+    "url" : "https://49xqngc8u3.execute-api.eu-central-1.amazonaws.com/{basePath}",
+    "variables" : {
+      "basePath" : {
+        "default" : "test"
+      }
+    }
+  } ],
+  "paths" : {
+    "/" : {
+      "x-amazon-apigateway-any-method" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "type" : "http",
+          "httpMethod" : "ANY",
+          "uri" : "http://petstore-demo-endpoint.execute-api.com/petstore/pets",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match"
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Empty" : {
+        "title" : "Empty Schema",
+        "type" : "object"
+      }
+    },
+    "securitySchemes" : {
+      "api_key" : {
+        "type" : "apiKey",
+        "name" : "x-api-key",
+        "in" : "header"
+      }
+    }
+  }
+}
