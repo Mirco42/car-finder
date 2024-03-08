@@ -2,7 +2,7 @@
   "openapi" : "3.0.1",
   "info" : {
     "title" : "Car Finder",
-    "version" : "2023-08-10T12:48:39Z"
+    "version" : "2023-08-22T08:57:41Z"
   },
   "servers" : [ {
     "url" : "https://49xqngc8u3.execute-api.eu-central-1.amazonaws.com/{basePath}",
